@@ -4,27 +4,30 @@ public class HashTagTokenizer {
 
 	public static void main(String[] args) {
 
-		String hashTag = args[0];
+		//String hashTag = args[0];
 		String []dictionary = readDictionary("dictionary.txt");
-		breakHashTag(hashTag, dictionary);
+		System.out.println(dictionary[2967]); 
+		System.out.print(existInDictionary("word", dictionary));
+		//breakHashTag(hashTag, dictionary);
 	}
 
 	public static String[] readDictionary(String fileName) {
 		String[] dictionary = new String[3000];
 		In in = new In(fileName);
 		for (int i = 0; i < 3000; i++){
-			dictionary[i] = in.readString();
+			String word = in.readString();
+			dictionary[i] = word;
 		}
 		return dictionary;
 	}
 
-	public static boolean existInDictionary(String word, String []dictionary) {
+	public static boolean existInDictionary(String word, String[] dictionary) {
 		for (int i = 0; i < 3000; i++){
-			if (dictionary[i] == word){return true;}
+			if (dictionary[i].equals(word)){return true;}
 		}
 		return false;
 	}
-
+	
 	public static void breakHashTag(String hashtag, String[] dictionary) {
 
 		// Base case: do nothing (return) if hashtag is an empty string.
