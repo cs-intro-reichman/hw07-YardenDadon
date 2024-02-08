@@ -24,10 +24,14 @@ public class SpellChecker {
 		int word2Length = word2.length();
 		if (word1Length == 0){return word2Length;}
 		if (word2Length == 0){return word1Length;}
-		
-		int maxLength = Math.max(lowercase1.length(), lowercase2.length());
-		for (int i = 0; i < maxLength; i++){
 
+
+		
+			if (lowercase1.substring(0, 1).equals(lowercase2.substring(0, 1))){
+				levenshtein(tail(lowercase1), tail(lowercase2));
+			}else {return 1 + Math.min(levenshtein(tail(lowercase1), lowercase2), 
+				Math.min(levenshtein(lowercase1, tail(lowercase2)), 
+				levenshtein(tail(lowercase1), tail(lowercase2))));}
 
 
 		}
